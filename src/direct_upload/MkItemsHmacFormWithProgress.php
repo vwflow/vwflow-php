@@ -1,5 +1,5 @@
 <?php
-# Sample to demonstrate how to generate a basic form that allows end users to upload a file directly to VWflow
+# Sample to demonstrate how to generate a basic form with a progress bar (requires jquery.uploadProgress.js) that allows end users to upload a file directly to VWflow
 # This is done using the VWflow 'items-hmac-redirect' resource, which uses HMAC authentication.
 #
 # Copyright (C) 2016 rambla.eu
@@ -17,10 +17,10 @@
 # limitations under the License.
 
 # required variables
-$account_id = "xxxxxxxx";                           # id of your VWflow account
-$workflow_profile_id = "xxxxxxxx";                  # workflow profile id to be used
-$secret = "xxxxxxxxxxxxx";                          # the auth_secret from the workflow profile, should not be made public !!
-$redirect = "http://example.com/";                  # URL to redirect to after upload is completed
+$account_id = "xxxxxxx";                              # id of your VWflow account
+$workflow_profile_id = "xxxxxxx";                     # workflow profile id to be used
+$secret = "xxxxxxxxx";                                # the auth_secret from the workflow profile, should not be made public !!
+$redirect = "http://example.com/";                    # URL to redirect to after upload is completed
 
 $msg_data = uniqid(rand(), true);               # generate unique msg_data value (for HMAC)
 date_default_timezone_set('Europe/Brussels');
@@ -40,10 +40,42 @@ $html = <<<EOT
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
 	<title>VWflow API - upload with form using the 'items-hmac-redirect' endpoint</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+	<script src="./js/jquery.uploadProgress.js"></script>
+	<script type="text/javascript">
+  	$(function() {
+  		$('form').uploadProgress({
+  			/* scripts locations for webkit */
+  			jqueryPath: "http://code.jquery.com/jquery-1.7.2.min.js",
+        progressUrl: "http://vwflow.com/upload_progress/",
+  			uploadProgressPath: "./js/jquery.uploadProgress.js",
+  			start:function(){},
+  			uploading: function(upload) {\$('#percents').html(upload.percents+'%');},
+  			interval: 1000
+  	    });
+  	});
+  </script>
+  <style type="text/css">
+  	.bar {
+  	  width: 300px;
+  	}
+
+  	#progress {
+  	  background: #eee;
+  	  border: 1px solid #222;
+  	  margin-top: 20px;
+  	}
+  	#progressbar {
+  	  width: 0px;
+  	  height: 24px;
+  	  background: #333;
+  	}
+  </style>
   </head>
   <body>
   <h1>Demo to create VWflow item with user generated content</h1>
-  <p>This sample demonstrates how to create a form for uploading files directly to VWflow. This is done using the 'items-hmac-redirect' API endpoint and HMAC authentication.</p>
+  <p>This sample demonstrates how to create a form for uploading files directly to VWflow. This is done using the 'items-hmac-redirect' API endpoint and HMAC authentication. A progress bar is shown.</p>
 
     <form id="MyForm" action="https://vwflow.com/api/v1/items-hmac-redirect/$account_id/$workflow_profile_id/" enctype="multipart/form-data" method="POST">
     <fieldset>
@@ -54,12 +86,19 @@ $html = <<<EOT
     <input type="hidden" name="vwflow_hmac" value="$hmac">
     </fieldset>
     </form>
+    
+    <div id="uploading">
+      <div id="progress" class="bar">
+        <div id="progressbar">&nbsp;</div>
+      </div>
+    </div>
+	  <div id="percents"></div>
+    
   </body>
   </html>
 EOT;
 
-$file = './form_for_srcencode.html';
+$file = './form_for_progress.html';
 file_put_contents($file, $html);
-
 
 ?>
