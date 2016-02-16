@@ -48,7 +48,7 @@ $html = <<<EOT
   		$('form').uploadProgress({
   			/* scripts locations for webkit */
   			jqueryPath: "http://code.jquery.com/jquery-1.7.2.min.js",
-        progressUrl: "http://vwflow.com/upload_progress/",
+        progressUrl: "https://vwflow.com/upload_progress/",
   			uploadProgressPath: "./js/jquery.uploadProgress.js",
   			start:function(){},
   			uploading: function(upload) {\$('#percents').html(upload.percents+'%');},
