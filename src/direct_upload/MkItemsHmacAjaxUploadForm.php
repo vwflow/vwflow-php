@@ -1,6 +1,6 @@
 <?php
 # Sample to demonstrate how to generate a form that uses XMLHttpRequest to upload files directly to VWflow.
-# This is done using the VWflow 'items-hmac-redirect' resource, which uses HMAC authentication.
+# This is done using the VWflow 'items-hmac' resource, which uses HMAC authentication.
 #  Data is transfered using X-VWFLOW-INFO and X-VWFLOW-HMAC headers.
 #
 # Copyright (C) 2016 rambla.eu
@@ -36,15 +36,15 @@ $html = <<<EOT
   <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta charset="utf-8" />
-  	<title>VWflow API - upload with form using the 'items-hmac-redirect' endpoint</title>
+  	<title>VWflow API - upload with form using the 'items-hmac' endpoint</title>
   </head>
   <body>
   <h1>Demo to create VWflow item with user generated content</h1>
-  <p>This sample demonstrates the use of XMLHttpRequest to upload files directly to VWflow. This is done using the 'items-hmac-redirect' API endpoint and HMAC authentication. Data is transferred in the X-VWFLOW-INFO and X-VWFLOW-HMAC headers.</p>
+  <p>This sample demonstrates the use of XMLHttpRequest to upload files directly to VWflow. This is done using the 'items-hmac' API endpoint and HMAC authentication. Data is transferred in the X-VWFLOW-INFO and X-VWFLOW-HMAC headers.</p>
   
   <p id="support-notice">Your browser does not support Ajax uploads : you can only use this sample through a regular upload (with hidden form fields).</p>
 
-  <form action="https://workflow.workflow02.rambla.be/api/v1/items-hmac-redirect/$account_id/$workflow_profile_id/" method="post" enctype="multipart/form-data" id="form-id">
+  <form action="https://workflow.workflow02.rambla.be/api/v1/items-hmac/$account_id/$workflow_profile_id/" method="post" enctype="multipart/form-data" id="form-id">
   <p><label>File to encode and publish : </label> <input id="file-id" type="file" name="our-file" /></p>
   <p><label>Client Data (json string with double quotes escaped) : </label> <input name="client_data" type="text" id="client_data" /></p>
   <p><input type="submit" value="Submit" /></p>
