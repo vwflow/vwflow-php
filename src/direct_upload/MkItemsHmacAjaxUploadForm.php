@@ -186,7 +186,7 @@ $html = <<<EOT
 
 EOT;
 
-$file = './form_for_srcencode_ajax.html';
+$file = './form_for_items_hmac_ajax_upload.html';
 file_put_contents($file, $html);
 
 

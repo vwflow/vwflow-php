@@ -98,7 +98,7 @@ $html = <<<EOT
   </html>
 EOT;
 
-$file = './form_for_progress.html';
+$file = './form_for_items_hmac_redirect_w_progress.html';
 file_put_contents($file, $html);
 
 ?>
