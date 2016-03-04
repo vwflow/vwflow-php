@@ -1,14 +1,14 @@
 # vwflow-php
 PHP Client Library for the VWflow API
 
-[VWflow](https://vwflow.com) is a cloud-based workflow automation platform for audiovisual content which allows companies to streamline all aspects of their online video presence. It comprises a customizable media player, a set of API’s and a multi-user Video Management System (VMS) allowing companies to administer their video, audio and image assets.
+[VWflow](https://vwflow.com) is a cloud-based **workflow automation platform for audiovisual content** which allows companies to streamline all aspects of their online video presence. It comprises a customizable media player, a set of API’s and a multi-user Video Management System (VMS) allowing companies to administer their video, audio and image assets.
 
 To start using VWflow, request a [free trial account](https://www.rambla.be/request-your-free-trial/) or contact support@vwflow.com.
 
-This library makes it easy to interact with VWflow API. It depends on the [Requests for PHP](https://github.com/rmccue/Requests) library for handling HTTP requests and responses.
+This library makes it easy to interact with the VWflow API. It depends on the [Requests for PHP](https://github.com/rmccue/Requests) library for handling HTTP requests and responses.
 
 ## Documentation
-The VWflow REST API is **browseable and self-documented**. To get started quickly, you can use the different [API methods](https://vwflow.com/api/v1/) in your browser and inspect their response. When you write a client application, the API will behave in exactly the same way except for authentication (when using the API in your browser, you're already authenticated). Each method of the browseable API is also documented, with a 'Details' panel providing additional information.
+The VWflow REST API is **browseable and self-documented**. To get started quickly, you can use the different [API methods](https://vwflow.com/api/v1/) in your browser and inspect their response. When you write a client application, the API will behave in exactly the same way except for authentication (when using the API in your browser, you're already authenticated). Each method of the browseable API is also documented, with a *Details* panel providing additional information.
 
 In the [examples](https://github.com/vwflow/vwflow-php/tree/master/examples) directory, you can also find scripts showing basic interaction with VWflow.
 
@@ -20,4 +20,4 @@ Client/server communication is protected by a message digest (HMAC) using a shar
 The examples directory contains a [direct_upload](https://github.com/vwflow/vwflow-php/tree/master/examples/direct_upload) section with scripts that demonstrate how to generate forms for end-user uploads.
 
 ## Development
-This PHP library is maintained by the VWflow team. It doesn't yet cover the complete API, but we plan to extend it based on our customer's needs. If you have a bug or feature request, please [open a new issue](https://github.com/vwflow/vwflow-php/issues/new).
+This PHP library is maintained by the VWflow team. It doesn't yet cover the complete API, but we plan to extend it based on the needs of our customers. If you have a bug or feature request, please [open a new issue](https://github.com/vwflow/vwflow-php/issues/new).
