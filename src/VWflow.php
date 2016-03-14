@@ -65,7 +65,7 @@ class VWflow
       $this->user_agent = $user_agent;
     }
     # set basic auth credentials in request options
-    $this->request_options = array('auth' => new Requests_Auth_Basic(array($this->username, $this->password)) );
+    $this->request_options = array('auth' => new Requests_Auth_Basic(array($this->username, $this->password)), 'timeout' => 25 );
     if (!is_null($ssl_verify)) {
       $this->request_options['verify'] = $ssl_verify;
     }
